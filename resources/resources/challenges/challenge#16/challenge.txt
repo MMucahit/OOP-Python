@@ -1,0 +1,47 @@
+##################
+## CHALLENGE 16 ##
+##################
+
+# Background:
+# A credit card consists of 16 digits, the last one of which is a checksum. In this challenge we will define mixins
+# that encapsulate pluggable behavior which could then later be combined to generate different kinds of credit card
+# numbers.
+
+# Requirements:
+
+# - Define a new type called CreditCard that supports a generate() method that randomly chooses the middle 14 digits
+# of a credit card. This type should also support a number property that reflects the generated number is spaced
+# blocks of 4 digits, similar to how they would show on a credit card, e.g. 5241 0213 8828 6423
+# - Then, define two other types that are not meant to be instantiated but rather only cooperatively work with the
+# generate() method from CreditCard:
+#     - Visa, which prepends the digits '42', and
+#     - MasterCard, which prepends the digits '52'
+# - Then define another type similar to the above that will be responsible for putting in the right checksum. To
+# calculate the checksum, we could use Luhn's algorithm:
+#     - keep track of a cumulative sum, initially 0
+#     - starting from the rightmost digit (i.e. 15th), work leftward
+#     - find the double (2 * n) of every other number, starting with the one above
+#     - if the double is greater than 9, add the sum of its digits to the cumulative sum (e.g. for 12 -> add 1+2 -> 3)
+#     - if not, add the double (2 * n)
+#     - for other non-doubled numbers, add the number itself
+#     - in the end, return the difference between 10 and cumulative sum mod 10
+# The integer returned by the above becomes the 16th digit of the credit card if and only if the mixin class for
+# valid credit cards is included.
+
+# You could test your implementation of Luhn's using a live calculator: https://simplycalc.com/luhn-calculate.php
+
+# Example Usage:
+
+# class Visa(VisaMixin, CreditCard):
+#     pass
+#
+# Visa().number
+# 4266 8886 0014 6408
+
+# class MasterCard(ValidMixin, MasterCardMixin, CreditCard):
+#     pass
+#
+# MasterCard().number
+# 5223 3755 8832 5379
+
+

@@ -1,0 +1,61 @@
+##################
+## CHALLENGE 10 ##
+##################
+
+# Requirements:
+# - Define 3 new types mimicking a financial markets equity portfolio hierarchy:
+#     a. Stock
+#         - has 4 attributes: ticker, price, dividend, dividend_frequency, e.g. MSFT, 360, 0.62, 4
+#         - dividend defaults to 0, whereas dividend_frequency to 4, i.e. quarterly
+#         - the type should expose annual_dividend as a calculated/managed attribute
+#         - the type should be immutable
+#     b. Position
+#         - has 2 attributes: stock and shares, e.g. MSFT, 100
+#         - compares with other instances of Position based on dollar value alone, e.g. a position of 100 shares of MSFT
+#           should compare equal to a position of 100 shares of LMT, if both MSFT and LMT trade at the same price
+#     c. Portfolio
+#         - has 1 attribute: holdings, which is a list of positions, e.g. [Position(MSFT...), Position(LMT...), ...]
+#         - exposes two managed attributes (i.e. dot access notation): value and portfolio_yield
+#         - value is the total dollar value (shares * stock.price) of all positions in the portfolio
+#         - portfolio_yield is simply total annual portfolio dividends divided by portfolio value
+# - Try to define all of the above types as dataclasses, with applicable customization and overrides.
+
+# Example Usage:
+# MSFT = Stock(ticker="MSFT", price=360, dividend=0.62, dividend_frequency=4)
+# LMT = Stock("LMT", 360, 2.80, 4)
+# GOOGL = Stock("GOOGL", 2200, 0, 0)
+
+# LMT
+# Stock(ticker='LMT', price=360, dividend=2.8, dividend_frequency=4)
+
+# LMT.dividend = 3.2
+# FrozenInstanceError: cannot assign to field 'dividend'
+
+# LMT.annual_dividend
+# 11.2
+
+# p1 = Position(MSFT, 100)
+# p2 = Position(LMT, 100)
+# p3 = Position(GOOGL, 10)
+
+# p2
+# Position(stock=Stock(ticker='LMT', price=360, dividend=2.8, dividend_frequency=4), shares=100)
+
+# p2 == p1
+# True
+
+# p2 <= p3
+# False
+
+# portfolio = Portfolio(holdings=[p1, p2, p3])
+# portfolio.portfolio_yield
+# 0.014553
+
+# f"{portfolio.portfolio_yield:.2%}"
+# '1.46%'
+
+# portfolio.value
+# 94000
+
+# f"${portfolio.value:,.2f}"
+# '$94,000.00'

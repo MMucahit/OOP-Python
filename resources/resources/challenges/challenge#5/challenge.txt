@@ -1,0 +1,40 @@
+#################
+## CHALLENGE 5 ##
+#################
+
+# # Requirements:
+# - Define a new type called DNABase which takes a single arg (nucleotide) at initiation
+# - Internally the value specified in the nucleotide arg should be validated and standardized
+# - The class should expose an attribute called base
+# - The class should not expose a nucleotide attribute
+# - The valid bases are: adenine, cytosine, guanine, and thymine
+# - A user should be able to specify either the full name as above, or the first letter, case insensitively
+# - The name exposed under the base attribute should be the full name in lowercase regardless of how it was specified
+# - Invalid or otherwise unrecognized bases should be rejected, whether they are specified at instance creation or
+# later altered through attribute setters
+# - The new type should have a full representation
+
+# Example Usage:
+# b1 = DNABase('A')
+# b1
+# DNABase(nucleotide='adenine')
+
+# b1.base
+# 'adenine'
+
+# b1.nucleotide
+# AttributeError: 'DNABase' object has no attribute 'nucleotide'
+
+# b1.base = 'c'
+# b1
+# DNABase(nucleotide='cytosine')
+
+# b1.base = "Aoli"
+# ValueError: Aoli is not a recognized DNA nucleotide
+
+# DNABase("aol")
+# ValueError: aol is not a recognized DNA nucleotide
+
+# b1.base = "thYMIne"
+# b1
+# DNABase(nucleotide='thymine')

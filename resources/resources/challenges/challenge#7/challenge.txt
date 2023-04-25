@@ -1,0 +1,66 @@
+#################
+## CHALLENGE 7 ##
+#################
+
+# Requirements:
+# - Define a new type called BankAccount that takes a single instance attribute: initial_balance (defaults to 0)
+# - This type should support a deposit() and withdraw() methods, which in turn should only support transactions in
+# positive amounts, i.e. an attempt to deposit or withdraw -2$ should be ignored
+# - Define 3 more specialized types of BankAccount with the following characteristics:
+#  - Savings: has pay_interest() method which deposits directly into the account when called; interest rate: 0.0035
+#  - HighInterest: like Savings, but higher interest and with a withdrawal fee. The fee is specified at initialization
+# and defaults to $5. It is taken from the account's balance on every withdrawal. Interest rate: 0.007
+#  - LockedIn: like HighInterest, but higher interest without the ability to withdraw on demand. Interest rate: 0.009
+# - The balance of any of the above accounts should be available by attribute access syntax, e.g. account.balance
+# - The representation of any of the instances should simply indicate the type of account and the amount contained
+# within, e.g. A SavingsBankAccount with $100 in it.
+
+# Example Usage:
+# b = BankAccount(initial_balance=100)
+# b
+# A BankAccount with $100 in it.
+
+# b.deposit(2)
+# Deposited $2.
+
+# b.withdraw(70)
+# Withdrew $70.
+
+# b
+# A BankAccount with $32 in it.
+
+# s = Savings(140)
+# s.pay_interest()
+# Deposited $0.49.
+
+# s
+# A SavingsBankAccount with $140.49 in it.
+
+
+# hi = HighInterest(withdrawal_fee=3)
+# hi
+# A HighInterestSavingsBankAccount with $0 in it.
+
+# hi.deposit(140)
+# Deposited $140.
+
+# hi.pay_interest()
+# Deposited $0.98.
+
+# hi.withdraw(0.98)
+# Withdrew $0.98.
+
+# hi
+# A HighInterestSavingsBankAccount with $137.0 in it.
+
+# l = LockedIn(1000)
+
+# l.pay_interest()
+# Deposited $9.0.
+
+# l.withdraw(1)
+# "Can't make an early withdrawal from a Locked-in Savings account."
+
+# l
+# A LockedInHighInterestSavingsBankAccount with $1009.0 in it.
+

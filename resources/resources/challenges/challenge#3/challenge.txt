@@ -1,0 +1,40 @@
+#################
+## CHALLENGE 3 ##
+#################
+
+# Requirements:
+# - Define a new type called Contact, which should store a person's name, last name, phone, email, as well as an
+# instance attribute called display_mode, which defaults to "masked"
+# - Should be able to create instances using name and last name only
+# - Two instances should be considered equal if any of the following conditions are met:
+#     - name, last name, phone and email are the same, or
+#     - phone or email are the same
+# - The instance representation should return obfuscated name and last name attributes when display_mode is set to "masked"
+# and the regular full representation including all attributes otherwise
+# - The str() representation on the other hand should always return the first letter of the last name followed by the
+# first letter of the first name
+# - A user should be able to format a masked instance's string representation so as to reveal all the attributes
+
+# Example Usage:
+# c1 = Contact("Andy", "Bek")
+# c2 = Contact("Andy", "Bek", "647-537-9271")
+# c3 = Contact("Andrew", "Bek", "647-537-9271", "hey@andybek.com")
+# c4 = Contact("Andy", "Bek", "647-537-9271", display_mode="show")
+
+# c2 == c3
+# True # because the phone number is the same
+
+# c1
+# Contact(name=An***, last_name=B**)
+
+# str(c1)
+# 'BA'
+
+# "{c:unmasked}".format(c=c1)
+# 'Contact(name=Andy, last_name=Bek, phone=None, email=None)'
+
+# f"{c2:unmasked}"
+# 'Contact(name=Andy, last_name=Bek, phone=647-537-9271, email=None)'
+
+# format(c2, "unmasked")
+# 'Contact(name=Andy, last_name=Bek, phone=647-537-9271, email=None)'

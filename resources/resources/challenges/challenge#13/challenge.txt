@@ -1,0 +1,45 @@
+##################
+## CHALLENGE 13 ##
+##################
+
+# Requirements:
+# - Create a letter guessing game for the English alphabet
+# - Initially, the computer picks a letter; then, the user is repeatedly given opportunities to guess that letter
+# - The performance of the user is tracked. Specifically:
+#     - the overall time taken to arrive at an accurate guess, and
+#     - the number of valid guesses that came before what the computer guess, and
+#     - the number of valid guesses that came after
+# - Internally, try to have the application use a custom exception hierarchy to refine the handling of the game flow.
+#   In other words, try to have the game control flow incorporate custom exceptions that match the problem domain
+#   (e.g. before letter, after letter, not a letter, etc)
+# - In the end end the user gets a summary of how long it took to correctly guess as well how many before/after guesses
+#   were made
+# - If the game is interrupted halfway through (hint: KeyboardInterrupt), the user still gets the summary of the
+# gameplay up to that point, including time played and number of valid guesses of each type.
+
+# Example Usage:
+# game = LetterGuessingGame()
+# game.play()
+
+# The computer has chosen a letter from the English alphabet... what do you think it was?
+# i
+# Nope, it was something before, guess again
+#
+# e
+# Nope, it was something before, guess again
+#
+# a
+# That was correct! You played for 5.09 seconds, and made 0 before guesses and 2 after guesses.
+
+# game = LetterGuessingGame()
+# game.play()
+
+# The computer has chosen a letter from the English alphabet... what do you think it was?
+# ad
+# Only English alphabet letters are supported...
+#
+# 12
+# Only English alphabet letters are supported...
+# KeyboardInterrupt %F2 in Pycharm or control c depending on your runtime
+
+# Game interrupted. You played for 5.4 seconds, and made 0 before guesses and 0 after guesses.

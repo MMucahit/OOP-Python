@@ -1,0 +1,44 @@
+#################
+## CHALLENGE 9 ##
+#################
+
+# Requirements:
+# - Define a new type called Point3D, that encapsulates 3 attributes: x, y, z
+# - The class should be slotted to those 3 attributes only
+# - Then define two subclasses of Point3D:
+#     - ColoredPoint - also slotted, but in addition supports a color attribute, defaulting to "black"
+#     - ShapedPoint - also slotted, but in addition supports a shape attribute, defaulting to "sphere"
+# - All instances of the above 3 classes should produce a representation that makees it easy to recreate the instance
+# - As a bonus challenge, consider implementing a single __repr__ in Point3D that flexibly returns all the applicable
+# attributes depending on an instance's type, i.e. x, y, z for Point3D, x, y, z, color for ColoredPoint, and so on.
+
+# Example Usage:
+
+# p = Point3D(1, 2, 3)
+
+# p.__dict__
+# AttributeError: 'Point3D' object has no attribute '__dict__'
+
+# cp = ColoredPoint(1, 4, 9, color="blue")
+
+# cp.__dict__
+# AttributeError: 'ColoredPoint' object has no attribute '__dict__'
+
+# sp = ShapedPoint(1, 2, 9, shape="sphere")
+
+# sp = ShapedPoint(1, 2, 9)
+# sp.__dict__
+# AttributeError: 'ShapedPoint' object has no attribute '__dict__'
+
+# sp.name = "spherical"
+# AttributeError: 'ShapedPoint' object has no attribute 'name'
+
+# sp.shape = "cube"
+# sp
+# ShapedPoint(x=1, y=2, z=9, shape='cube')
+
+# cp
+# ColoredPoint(x=1, y=4, z=9, color='blue')
+
+# p
+# Point3D(x=1, y=2, z=3)

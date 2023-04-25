@@ -1,0 +1,34 @@
+##################
+## CHALLENGE 11 ##
+##################
+
+# Requirements:
+# - Define a new type called StudentProfile, whose instances should encapsulate the following attributes:
+#   - the student's name
+#   - the student's GRE score (integers between 130 and 340), and
+#   - the student's SAT score (integers between 400 and 1600)
+# - StudentProfile instances should have a customized representation
+# - The score fields should be validated for the correct type and value, i.e. they should be ints that fall in the
+# expected range
+# - If a score field is not specified at instantiation, it must default to the minimum of its respective valid range
+# - Use descriptors with instance-specific storage to implement these validations
+# - As an extra challenge, try to maximize code reuse by writing a single general descriptor
+
+# Example Usage:
+# sp = StudentProfile(name="Andrew", sat=1220, gre=130)
+# sp
+# StudentProfile(name='Andrew', sat=1220, gre=130)
+
+# sp.__dict__
+# {'name': 'Andrew', 'SATScore_sat': 1220, 'GREScore_gre': 130}
+
+# sp2 = StudentProfile("Liza", gre=190)
+# sp2
+# StudentProfile(name='Liza', sat=400, gre=190)
+
+# sp2.gre = 2000
+# ValueError: Score must fall between 130 and 340
+
+# sp2.gre = 1200.2
+# TypeError: Score must be an integer
+

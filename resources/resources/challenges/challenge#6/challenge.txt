@@ -1,0 +1,49 @@
+#################
+## CHALLENGE 6 ##
+#################
+
+# # Requirements:
+# - Define a new type Tablet that takes a single attribute called model at instantiation
+# - The class should only support 3 types of models: lite, pro and max
+# - Each instance will also have base_storage and memory attributes, which will be set automatically depending on the
+# specified model; base_storage doubles at each model increment (i.e. 32 of lite, 128 for max), whereas memory increases
+# by 1 (i.e. 1 for lite, 3 for max)
+# - In addition, the Tablet class should enable users to expand the storage through 2 separate interfaces:
+#     - an add_storage() method, e.g. t1.add_storage(32) should add 32GB to the base_storage of the instance
+#     - direct attribute setter, e.g. t1.storage = 256, should ensure that the overall memory of the device is 256 by
+#     dynamically handling the split between base_storage and added_storage depending on the model
+# - All models should not exceed 1024GB in combined storage
+# - The Tablet type should also reflect the memory and base_storage of the device as a read-only attributes
+# - Tablet instances should have a representation that would make it easy to recreate the instance
+
+
+# Example Usage:
+# t1 = Tablet("Lite")
+# t1 # Tablet(model="lite", base_storage=32, added_storage=0, memory=2)
+
+# Tablet("Batman")
+# ValueError: Unrecognized model
+
+# t1.add_storage(16)
+# t1 # Tablet(model="lite", base_storage=32, added_storage=16, memory=2)
+
+# t1.storage
+# 48
+
+# t1.storage = 256
+# t1 # Tablet(model="lite", base_storage=32, added_storage=224, memory=2)
+
+# t2.storage = 256
+# t2 # Tablet(model="pro", base_storage=64, added_storage=192, memory=3)
+
+# t1.add_storage(2048)
+# ValueError: Memory cannot exceed 1024
+
+# t1.memory
+# t1.memory = 2
+# AttributeError: can't set attribute
+
+# t1.base_storage
+# 32
+# t1.base_storage = 64
+# AttributeError: can't set attribute

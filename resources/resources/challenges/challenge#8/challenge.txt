@@ -1,0 +1,48 @@
+#################
+## CHALLENGE 8 ##
+#################
+
+# Background:
+# The motivation from today's lecture https://pypi.org/project/bidict/
+
+# Requirements:
+# - Define a new type of dictionary called BidirectionalDict
+# - It should behave like a regular dictionary, except for enabling the user to look up in either direction, i.e.
+# either a value by key (as in a regular dict) or a key by its value
+# - The length of the dictionary should reflect the number of unique non-mirrored key-value pairs
+# - When/if a given pair is removed from the dict, its mirrored sibling should also be removed
+# - Other dictionary methods like pop() and update() should work as expected, and apply to the mirrored pair too
+
+# Hint: Looks complex but should relatively short. When inheriting from the right class, we only need to override 3
+# dunders to achieve all of the above.
+
+# Example Usage:
+# bd = BidirectionalDict({"code": "more", "sleep": "less"})
+
+# bd["code"]
+# 'more'
+
+# bd["more"]
+# 'code'
+
+# bd
+# {'code': 'more', 'more': 'code', 'sleep': 'less', 'less': 'sleep'}
+
+# len(bd)
+# 2
+
+# bd["code"] = "better"
+# bd["better"]
+# 'code'
+
+# bd.update([("sleep", "deeper")])
+# bd["deeper"]
+# 'sleep'
+
+# bd.pop("sleep")
+# bd
+# {'code': 'better', 'better': 'code'}
+
+# del bd['code']
+# bd
+# {}

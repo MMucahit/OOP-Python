@@ -1,0 +1,91 @@
+##################
+## CHALLENGE 14 ##
+##################
+
+# Requirements:
+# - Define two new types: PlayingCard and CardDeck; # https://en.wikipedia.org/wiki/Standard_52-card_deck
+# - PlayingCard instances should support two instance attributes: suit and rank. The specified attributes should be
+# standardized to lowercase, but not otherwise validated. Equality and a good string representation should be supported.
+# - CardDeck will represent the traditional deck of 52 cards:
+#     - 4 suits ('spades', 'diamonds', 'clubs', 'hearts') * 13 ranks (2 through 10, inclusive, Ace, Jack, King, Queen)
+# - CardDeck should be a pythonic sequence supporting the following functionality:
+#   - membership testing with 'in' keyword (returns bool)
+#   - square bracket indexing with ints (PlayingCard instances should be returned)
+#   - slicing with slice objects (CardDeck should be returned)
+#   - iteration in for loops
+#   - concatenation through '+' operator, supported between two instances of CardDeck, or PlayingCard & CardDeck
+#   - concatenation/extension through '*' operator, supported between an instance of CardDeck and int
+#   - both of the above concatenation operations should be commutative
+# - If instantiated with no args, CardDeck should generate a full deck of 52 cards. If instantiated with a python list
+# of at least one PlayingCard, CardDeck should reflect only the list of cards passed to it at instantiation. If a python
+# list containing no valid PlayingCard instances, the default full deck of 52 cards should be generated.
+# - Finally, CardDeck should support a draw(n=1) method that randomly selects a card from a given deck and returns it
+# without replacement, i.e. the number of cards remaining in the deck decreases by 1
+# - If a user draws more than 1 card at a time, e.g. draw(n=3), a CardDeck type should be returned; if only one card
+# is drawn, a PlayingCard type should be returned.
+
+# Example Usage:
+# cd = CardDeck()
+# cd2 = CardDeck(cards=[PlayingCard('diamonds', '2')])
+# cd3 = CardDeck(cards=["Andrew", PlayingCard('clubs', '7')])
+# cd4 = CardDeck(cards=["Andrew", "Lisa"])
+
+# len(cd), len(cd2), len(cd3), len(cd4)
+# 52 1 1 52
+
+# cd[1] # indexing
+# PlayingCard(suit='spades', rank='j')
+
+# cd[-10:]
+# CardDeck(cards=[PlayingCard(suit='hearts', rank='q'), PlayingCard(suit='hearts', rank='2'), PlayingCard(suit='hearts', rank='3'), PlayingCard(suit='hearts', rank='4'), PlayingCard(suit='hearts', rank='5'), PlayingCard(suit='hearts', rank='6'), PlayingCar...
+
+# PlayingCard('spADes', 'J') in cd
+# True
+
+# Concatenation should be supported using the + operator
+# cd2 + PlayingCard('spades', '6') # between Decks and PlayingCards
+# CardDeck(cards=[PlayingCard(suit='diamonds', rank='2'), PlayingCard(suit='spades', rank='6')])
+
+# cd2 + cd3  # between two Decks
+# CardDeck(cards=[PlayingCard(suit='diamonds', rank='2'), PlayingCard(suit='clubs', rank='7')])
+
+# and should be commutative
+# PlayingCard('spades', '6') + cd3
+# CardDeck(cards=[PlayingCard(suit='clubs', rank='7'), PlayingCard(suit='spades', rank='6')])
+
+# commutatively, duplicating CardDecks using '*' operator
+# cd2 * 3
+# CardDeck(cards=[PlayingCard(suit='diamonds', rank='2'), PlayingCard(suit='diamonds', rank='2'), PlayingCard(suit='diamonds', rank='2')])
+
+# 3 * cd2
+# CardDeck(cards=[PlayingCard(suit='diamonds', rank='2'), PlayingCard(suit='diamonds', rank='2'), PlayingCard(suit='diamonds', rank='2')])
+
+# iteration
+# for card in 3 * cd2:
+#     print(card)
+# PlayingCard(suit='diamonds', rank='2')
+# PlayingCard(suit='diamonds', rank='2')
+# PlayingCard(suit='diamonds', rank='2')
+
+# drawing a single card randomly -> PlayingCard
+# len(cd)
+# cd.draw()
+# len(cd)
+#
+# 52
+# PlayingCard(suit='spades', rank='4')
+# 51
+
+# drawing more than 1 card at a time -> CardDeck
+# print(len(cd))
+# print(cd.draw(4))
+# print(type(cd.draw(4)))
+# print(len(cd))
+
+# 51
+# CardDeck(cards=[PlayingCard(suit='diamonds', rank='5'), PlayingCard(suit='clubs', rank='k'), PlayingCard(suit='diamonds', rank='8'), PlayingCard(suit='hearts', rank='7')])
+# <class '__main__.CardDeck'>
+# 43
+
+# PlayingCard('spADes', '6') == PlayingCard('spades', '6')
+# True

@@ -1,0 +1,40 @@
+##################
+## CHALLENGE 15 ##
+##################
+
+# Requirements:
+# - Define two new types: JobApplicant and JobApplicantPool
+# - JobApplicant will encapsulate the following attributes:
+#   - applicant_id, int
+#   - years_experience, int
+#   - is_recommended, bool
+#   - first_interview_score, float
+#   - second_interview_score, float
+# - JobApplicantPool will be a sequence container of JobApplicants. As a starting point, inherit from
+# collections.abc.Sequence and try to create an instance. Then, implement the required functionality as indicated
+# in the resulting exceptions until none remain.
+# - Beyond evaluating as an instance and subclass of the Sequence ABC, the JobApplicantPool type should also make available
+# the entire applicant pool in descending order of applicant score, ideally through attribute access, e.g.
+# JobApplicantPool().pool
+# - Applicants should be scored (rounded to 2 decimals) according to the following formula:
+#         years_experience / 2 +
+#         1 if the applicant is_recommended, else 0 +
+#         applicant.first_interview_score / 2  +
+#         applicant.second_interview_score
+
+# Example Usage:
+# ja1 = JobApplicant(applicant_id="1234", years_experience=2, is_recommended=True, first_interview_score=2.2, second_interview_score=3.1)
+# ja2 = JobApplicant("6937", 12, False, 1.2, 9.4)
+#
+# jab = JobApplicantPool()
+#
+# jab.add(ja1)
+# jab.add(ja2)
+#
+# jab
+#
+# Applicant Pool
+# (Score | ID)
+# --------------------
+# 16.0 - 6937
+# 6.2 - 1234
