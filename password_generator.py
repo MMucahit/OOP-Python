@@ -1,5 +1,6 @@
 from string import ascii_letters, punctuation
 from random import choices
+from copy import copy
 
 class Password:
     INPUT_UNIVERSE = {
@@ -25,7 +26,11 @@ class Password:
         self._generate()
 
     def _generate(self):
-        population = self.INPUT_UNIVERSE["letters"]
+        ### Mutable object issue, we have to carefull that use mutable object for class instance
+        ## If we didn't use copy, 
+        # population point list of letters[INPUT_UNIVERSE] object reference 
+        # when population has changed list of letters will be affected that.
+        population = copy(self.INPUT_UNIVERSE["letters"])
         length = self.length or self.DEFAULT_LENGTH[self.strength]
 
         if self.strength == "high":
@@ -45,3 +50,6 @@ if __name__ == "__main__":
 
     p_high = Password(strength='high')
     print(f"High password: {p_high.password} - {p_high}")
+
+    p_default = Password(strength='mid')
+    print(f"Default password: {p_default.password} - {p_default}")
