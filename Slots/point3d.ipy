@@ -1,0 +1,32 @@
+class Point3D:
+    __slots__ = ('x', 'y', 'z')
+
+    def __init__(self, x, y, z) -> None:
+        self.x = x
+        self.y = y
+        self.z = z
+
+    def __repr__(self) -> str:
+        class_name = type(self).__name__
+
+        if class_name != 'Point3D':
+            attr = self.__slots__
+            value = getattr(self, self.__slots__)
+
+            return f'{class_name}(x={self.x!r}, y={self.y!r}, z={self.z!r}, {attr}={value!r})'
+    
+        return f'{class_name}(x={self.x!r}, y={self.y!r}, z={self.z!r})'
+
+class ColoredPoint(Point3D):
+    __slots__ = ('color')
+
+    def __init__(self, x, y, z, color = 'black') -> None:
+        super().__init__(x, y, z)
+        self.color = color
+
+class ShapedPoint(Point3D):
+    __slots__ = ('shape')
+
+    def __init__(self, x, y, z, shape = 'sphere') -> None:
+        super().__init__(x, y, z)
+        self.shape = shape
